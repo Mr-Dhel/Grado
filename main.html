@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pilipinas Grado</title>
+  <style>
+    body {
+  background: url("assets/images/philippines-bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+    /* Sidebar */
+    .sidebar {
+  width: 220px;
+  background: url("assets/images/grado.png") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+}
+
+
+    /*.sidebar h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: #f1c40f;
+    }
+
+    .sidebar p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ecf0f1;
+      text-align: center;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      margin-left: 220px; /* space for sidebar */
+      padding: 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .face {
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .face img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .face:hover img {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,120,215,0.4);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .face:hover .overlay {
+      opacity: 1;
+    }
+
+    .bar-fill {
+  height: 26px;
+  background: linear-gradient(to right, #0078d7, #2ecc71);
+  color: #fff;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 26px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  width: 0; /* start collapsed */
+  transition: width 1.2s ease-in-out;
+}
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+    <!-- Top row (2 faces) -->
+    <div class="row">
+      <div class="face" onclick="goToHeroPage('President')">
+        <img src="assets/images/marcos.jpg" alt="President">
+        <div class="overlay">President</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Vice_President')">
+        <img src="assets/images/sara.jpg" alt="Vice President">
+        <div class="overlay">Vice President</div>
+      </div>
+    </div>
+
+    <!-- Second row (5 faces) -->
+    <div class="row">
+      <div class="face" onclick="goToHeroPage('Bam')">
+        <img src="assets/images/bam.jpg" alt="Bam">
+        <div class="overlay">Bam</div>
+        
+      </div>
+      <div class="face" onclick="goToHeroPage('Bong')">
+        <img src="assets/images/bong_go.jpg" alt="Bong">
+        <div class="overlay">Bong</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Bato')">
+        <img src="assets/images/bato.jpg" alt="Bato">
+        <div class="overlay">Bato</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Tulfo')">
+        <img src="assets/images/tulfo.png" alt="Tulfo">
+        <div class="overlay">Tulfo</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Kiko')">
+        <img src="assets/images/kiko.png" alt="Kiko">
+        <div class="overlay">Kiko</div>
+      </div>
+    </div>
+
+    <!-- Third row (5 faces) -->
+    <div class="row">
+      <div class="face" onclick="goToHeroPage('Marcoleta')">
+        <img src="assets/images/marcoleta.jpg" alt="Marcoleta">
+        <div class="overlay">Marcoleta</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Camille')">
+        <img src="assets/images/camille.jpg" alt="Camille">
+        <div class="overlay">Camille</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Cayetano')">
+        <img src="assets/images/cayetano.jpg" alt="Cayetano">
+        <div class="overlay">Cayetano</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Imee')">
+        <img src="assets/images/imee.png" alt="Imee">
+        <div class="overlay">Imee</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Lapid')">
+        <img src="assets/images/lapid.png" alt="Lapid">
+        <div class="overlay">Lapid</div>
+      </div>
+    </div>
+
+    <!-- Bottom row (2 faces) -->
+    <div class="row">
+      <div class="face" onclick="goToHeroPage('Ping')">
+        <img src="assets/images/ping.jpg" alt="Ping">
+        <div class="overlay">Ping</div>
+      </div>
+      <div class="face" onclick="goToHeroPage('Tulfo2')">
+        <img src="assets/images/tulfo.png" alt="Tulfo Again">
+        <div class="overlay">Tulfo</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const heroPages = {
+      President: "sub_pages/top/president.html",
+      Vice_President: "sub_pages/top/vice_president.html",
+      Bam: "sub_pages/senators/bam.html",
+      Bong: "sub_pages/senators/bong_go.html",
+      Bato: "sub_pages/senators/bato.html",
+      Tulfo: "sub_pages/senators/tulfo.html",
+      Kiko: "sub_pages/senators/kiko.html",
+      Marcoleta: "sub_pages/senators/marcoleta.html",
+      Camille: "sub_pages/senators/camille.html",
+      Cayetano: "sub_pages/senators/cayetano.html",
+      Imee: "sub_pages/senators/imee.html",
+      Lapid: "sub_pages/senators/lapid.html",
+      Ping: "sub_pages/senators/ping.html",
+      Tulfo2: "sub_pages/senators/tulfo2.html"
+    };
+
+    function goToHeroPage(heroKey) {
+      window.location.href = heroPages[heroKey];
+    }
+  </script>
+</body>
+</html>
