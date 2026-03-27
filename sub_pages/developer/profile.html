@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhel AI Avatar</title>
+  <style>
+    :root {
+      --ink: #eaf2ff;
+      --muted: #b9c9e7;
+      --panel: rgba(7, 18, 40, 0.88);
+      --panel-border: rgba(110, 170, 255, 0.35);
+      --accent: #5eb0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 15%, #284f8d 0, transparent 35%),
+        radial-gradient(circle at 80% 70%, #133566 0, transparent 28%),
+        linear-gradient(150deg, #040b1b, #0a1f47 55%, #08172e 100%);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.02) 0,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.35;
+    }
+
+    .bridge-back {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 100000;
+      text-decoration: none;
+      background: rgba(6, 21, 48, 0.9);
+      border: 1px solid rgba(160, 203, 255, 0.45);
+      color: #e8f3ff;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    #dhelAssistant {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #assistantCard {
+      display: flex;
+      gap: 14px;
+      align-items: stretch;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--panel-border);
+      background: var(--panel);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      width: min(1100px, 100%);
+      min-height: min(88vh, 760px);
+    }
+
+    .assistant-avatar-pane {
+      flex: 0 0 min(32vw, 340px);
+      min-width: 240px;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    #assistantAvatar {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    #assistantBody {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      max-height: min(82vh, 700px);
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(120, 180, 255, 0.85) rgba(12, 30, 60, 0.55);
+    }
+
+    #assistantTitle {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #a8d3ff;
+    }
+
+    #assistantSub {
+      margin: 4px 0 10px 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    #assistantBubble {
+      margin: 0;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(124, 181, 255, 0.35);
+      background: rgba(14, 35, 72, 0.65);
+      color: #edf4ff;
+      line-height: 1.55;
+      min-height: 72px;
+      flex: 1;
+      overflow-y: scroll;
+      white-space: pre-line;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(120, 180, 255, 0.85) rgba(12, 30, 60, 0.55);
+    }
+
+    #assistantBody::-webkit-scrollbar,
+    #assistantBubble::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    #assistantBody::-webkit-scrollbar-track,
+    #assistantBubble::-webkit-scrollbar-track {
+      background: rgba(12, 30, 60, 0.55);
+      border-radius: 10px;
+      border: 1px solid rgba(124, 181, 255, 0.18);
+    }
+
+    #assistantBody::-webkit-scrollbar-thumb,
+    #assistantBubble::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #8cc4ff, #4b95ea);
+      border-radius: 10px;
+      border: 1px solid rgba(210, 232, 255, 0.35);
+    }
+
+    #assistantBody::-webkit-scrollbar-thumb:hover,
+    #assistantBubble::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #9fd0ff, #5aa2f0);
+    }
+
+    #assistantFooter {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .assistantBtn {
+      background: transparent;
+      border: 1px solid rgba(155, 199, 255, 0.45);
+      color: #dcebff;
+      padding: 6px 9px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    #assistantProgress {
+      flex: 1;
+      min-width: 120px;
+      height: 6px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(11, 116, 255, 0.18);
+    }
+
+    #assistantProgress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #5eb0ff, #99cdff);
+      transition: width 0.25s linear;
+    }
+
+    .contact-panel {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(124, 181, 255, 0.35);
+      background: rgba(14, 35, 72, 0.65);
+    }
+
+    .contact-title {
+      margin: 0 0 8px 0;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #d6e9ff;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(155, 199, 255, 0.45);
+      background: rgba(6, 21, 48, 0.9);
+      color: #e8f3ff !important;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    #assistantMinimized {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #0b74ff, #0066d6);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(11, 116, 255, 0.18);
+      cursor: pointer;
+      font-weight: 800;
+      margin-left: auto;
+    }
+
+
+    @media (max-width: 767px) {
+      #dhelAssistant {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+
+      #assistantCard {
+        flex-direction: column;
+      }
+
+      .assistant-avatar-pane {
+        flex: 0 0 auto;
+        min-width: 0;
+        max-height: 280px;
+      }
+
+      #assistantBubble {
+        min-height: 64px;
+      }
+
+    }
+  </style>
+<style id="global-white-text">
+  body, h1, h2, h3, h4, h5, h6, p, label, li, span, div, a, button, th, td, small, strong {
+    color: #ffffff !important;
+  }
+  input, textarea, select, option {
+    color: #ffffff !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(255,255,255,0.8) !important;
+  }
+</style>
+</head>
+<body>
+  <a class="bridge-back" href="../../index.html">Back To Home</a>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <div id="dhelAssistant" aria-live="polite" aria-atomic="false">
+    <div id="assistantCard" role="dialog" aria-label="Dhel AI Assistant">
+      <div class="assistant-avatar-pane">
+        <img id="assistantAvatar" src="../../assets/images/dhel_ai.png" alt="Dhel AI avatar">
+      </div>
+      <div id="assistantBody">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+          <div>
+            <h1 id="assistantTitle">Dhel</h1>
+            <p id="assistantSub">Personal AI Avatar</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="assistantSkip" class="assistantBtn" type="button">Skip</button>
+            <button id="assistantReplay" class="assistantBtn" type="button">Replay</button>
+            <button id="assistantClose" class="assistantBtn" type="button">Close</button>
+          </div>
+        </div>
+        <p id="assistantBubble" aria-live="polite" aria-atomic="true"></p>
+        <div id="assistantFooter">
+          <div id="assistantProgress"><i></i></div>
+          <button id="assistantVoiceToggle" class="assistantBtn" type="button">Male Voice On</button>
+        </div>
+        <div class="contact-panel" aria-label="Hire and contact details">
+          <p class="contact-title">Hire / Contact Dhel</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:dumaledhelcarmelo@gmail.com">dumaledhelcarmelo@gmail.com</a>
+            <a class="contact-link" href="https://www.linkedin.com/in/dumale-dhel-carmelo" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            <a class="contact-link" href="https://github.com/Mr-Dhel" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="assistantMinimized" aria-hidden="true">D</div>
+  </div>
+
+  <script>
+    const assistantCard = document.getElementById("assistantCard");
+    const bubble = document.getElementById("assistantBubble");
+    const progressBar = document.querySelector("#assistantProgress > i");
+    const skipBtn = document.getElementById("assistantSkip");
+    const replayBtn = document.getElementById("assistantReplay");
+    const closeBtn = document.getElementById("assistantClose");
+    const voiceBtn = document.getElementById("assistantVoiceToggle");
+    const minimized = document.getElementById("assistantMinimized");
+
+    let useVoice = true;
+    let selectedMaleVoice = null;
+    let idx = 0;
+    let playing = false;
+    let lineTimer = null;
+
+    const scriptLines = [
+      {
+        text: "Greetings, I am Dhel's digital avatar. Let me introduce a visionary innovator whose work bridges technology and humanity.",
+        delay: 3600
+      },
+      {
+        text: "Dhel is a developer, analyst, and security-minded builder with expertise in software engineering, data analysis, and cybersecurity.",
+        delay: 3600
+      },
+      {
+        text: "Projects include designing a three-bladed vertical axis wind turbine powered by a brushless motor, developing advanced face recognition systems in Python, and creating a rental platform enhanced with facial recognition and an AI assistant.",
+        delay: 5200
+      },
+      {
+        text: "But Dhel's vision goes beyond code and machines.",
+        delay: 2600
+      },
+      {
+        text: "With plans to acquire a 3D printer, Dhel is determined to build artificial legs and donate them to those in need - people who cannot afford such devices but deserve dignity and hope.",
+        delay: 4600
+      },
+      {
+        text: "This mission is not about profit, but about giving something greater than material: the gift of possibility.",
+        delay: 3600
+      },
+      {
+        text: "Every project reflects Dhel's belief that technology should empower, protect, and inspire.",
+        delay: 3200
+      },
+      {
+        text: "A problem-solver, innovator, and humanitarian, Dhel is ready to bring creativity, technical depth, and compassion to any opportunity.",
+        delay: 4200
+      }
+    ];
+
+    function setProgress(percent) {
+      progressBar.style.width = Math.max(0, Math.min(100, percent)) + "%";
+    }
+
+    function pickMaleVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+      const maleHints = ["male", "man", "david", "mark", "george", "james", "daniel", "alex"];
+      const match = voices.find((voice) => {
+        const hay = (voice.name + " " + voice.voiceURI).toLowerCase();
+        return maleHints.some((hint) => hay.includes(hint));
+      });
+      return match || voices[0];
+    }
+
+    function ensureVoicesLoaded() {
+      if (!("speechSynthesis" in window)) return;
+      const populate = () => {
+        selectedMaleVoice = pickMaleVoice();
+      };
+      populate();
+      window.speechSynthesis.onvoiceschanged = populate;
+    }
+
+    function speakAndWait(text, fallbackMs) {
+      return new Promise((resolve) => {
+        if (!useVoice || !("speechSynthesis" in window)) {
+          lineTimer = setTimeout(resolve, fallbackMs || 2200);
+          return;
+        }
+
+        try {
+          const utter = new SpeechSynthesisUtterance(text);
+          utter.rate = 1;
+          utter.pitch = 1;
+          utter.volume = 1;
+          utter.lang = "en-US";
+          if (!selectedMaleVoice) selectedMaleVoice = pickMaleVoice();
+          if (selectedMaleVoice) utter.voice = selectedMaleVoice;
+
+          utter.onend = () => resolve();
+          utter.onerror = () => resolve();
+          window.speechSynthesis.speak(utter);
+        } catch (e) {
+          lineTimer = setTimeout(resolve, fallbackMs || 2200);
+        }
+      });
+    }
+
+    function renderTranscript() {
+      const lines = scriptLines.slice(0, idx + 1).map((line) => line.text);
+      bubble.textContent = lines.join("\n\n");
+    }
+
+    function stopIntro() {
+      playing = false;
+      clearTimeout(lineTimer);
+      setProgress(0);
+      try {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
+
+    async function runNext() {
+      while (playing && idx < scriptLines.length) {
+        const line = scriptLines[idx];
+        renderTranscript();
+        const pct = Math.round(((idx + 1) / scriptLines.length) * 100);
+        setProgress(pct);
+        await speakAndWait(line.text, line.delay || 2200);
+        if (!playing) return;
+        idx += 1;
+      }
+
+      if (idx >= scriptLines.length) {
+        playing = false;
+        setProgress(100);
+      }
+    }
+
+    function playIntro(startIndex) {
+      stopIntro();
+      idx = startIndex || 0;
+      playing = true;
+      assistantCard.style.display = "flex";
+      minimized.style.display = "none";
+      runNext();
+    }
+
+    skipBtn.addEventListener("click", () => {
+      stopIntro();
+      bubble.textContent = "Intro skipped. Press Replay anytime.";
+    });
+
+    replayBtn.addEventListener("click", () => {
+      playIntro(0);
+    });
+
+    closeBtn.addEventListener("click", () => {
+      stopIntro();
+      assistantCard.style.display = "none";
+      minimized.style.display = "flex";
+    });
+
+    minimized.addEventListener("click", () => {
+      assistantCard.style.display = "flex";
+      minimized.style.display = "none";
+      if (!bubble.textContent.trim()) {
+        bubble.textContent = "Press Replay to hear the full introduction.";
+      }
+    });
+
+    voiceBtn.addEventListener("click", () => {
+      useVoice = !useVoice;
+      voiceBtn.textContent = useVoice ? "Male Voice On" : "Male Voice Off";
+      if (!useVoice && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "g" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const isHidden = assistantCard.style.display === "none" || assistantCard.style.display === "";
+        assistantCard.style.display = isHidden ? "flex" : "none";
+        minimized.style.display = isHidden ? "none" : "flex";
+      }
+    });
+
+    ensureVoicesLoaded();
+    setTimeout(() => playIntro(0), 500);
+  </script>
+</body>
+</html>

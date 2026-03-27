@@ -44,7 +44,6 @@
     .card{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:14px;box-shadow:var(--shadow-light)}
     .card h3{margin:0 0 8px 0;font-size:15px}
     .card canvas{width:100% !important; height:320px !important; display:block}
-    /* Tablet view: 768px - 980px */
     @media (max-width:980px){
       .layout{grid-template-columns:1fr}
       .controls{flex-direction:column}
@@ -52,143 +51,50 @@
       .card canvas{height:280px !important}
       .wrap{max-width:100%;margin:16px auto;padding:12px}
       .panel{padding:14px}
-      .top{padding-bottom:10px;margin-bottom:12px;gap:8px}
       .profile img{width:56px;height:56px}
       .profile h2{font-size:16px}
       .profile p{font-size:12px}
-      .controls{gap:10px}
       button{font-size:13px;padding:8px 10px}
       .card canvas{height:250px !important}
-      .option{font-size:12px;padding:6px 10px}
-      .option input{width:16px;height:16px}
-      textarea{width:100%;min-height:70px;font-size:13px}
-      input[type="date"]{font-size:13px;padding:6px}
-      #gameAssistant{width:clamp(240px,25vw,320px);left:12px;bottom:12px}
-      #assistantAvatar{width:56px;height:56px}
-      #assistantTitle{font-size:13px}
-      #assistantSub{font-size:11px}
-      #assistantBubble{font-size:12px;padding:8px 10px}
     }
-
-    /* Mobile view: below 768px */
     @media (max-width:767px){
       .wrap{max-width:100%;margin:8px;padding:8px}
       .panel{padding:12px;border-radius:8px}
-      
-      /* Top section */
-      .top{flex-direction:column;align-items:flex-start;gap:8px;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid #eef2f7}
-      
-      /* Profile section */
+      .top{flex-direction:column;align-items:flex-start;gap:8px;padding-bottom:8px;margin-bottom:10px}
       .profile{gap:10px;width:100%}
-      .profile img{width:48px;height:48px;border-radius:8px}
+      .profile img{width:48px;height:48px}
       .profile h2{font-size:15px;margin:0}
       .profile p{font-size:11px;margin:0}
-      .profile div{flex:1}
-      
-      /* Overall avg display */
-      .top > div:last-child{display:flex;justify-content:space-between;align-items:center;width:100%;gap:8px;text-align:left}
-      .top > div:last-child > div {flex:1}
-      .top > div:last-child > button{flex:0 0 auto;font-size:12px;padding:6px 8px}
-      
-      /* Controls section */
       .controls{flex-direction:column;gap:10px;align-items:stretch}
-      .controls > div{width:100%}
-      
-      /* Rating options */
-      .options{padding:6px;gap:6px}
-      .options.horizontal{flex-wrap:wrap}
-      .options.vertical{flex-direction:column}
-      .option{font-size:11px;padding:6px 8px;gap:6px}
-      .option input{width:15px;height:15px}
-      .option span{flex:1}
-      
-      /* Rating value display */
-      #rating-value{font-size:13px;word-wrap:break-word}
-      
-      /* Toggle orientation button */
-      #toggleOrientation{font-size:11px;padding:4px 6px;margin-left:0 !important;margin-top:6px}
-      
-      /* Textarea section */
-      .textarea-wrap{gap:6px}
-      .textarea-wrap > div{display:flex;flex-direction:column;gap:6px}
-      textarea{width:100%;min-height:60px;font-size:13px;padding:8px;border-radius:6px}
-      
-      /* Date input */
+      .option{font-size:11px;padding:6px 8px}
+      textarea{width:100%;min-height:60px;font-size:13px}
       input[type="date"]{width:100%;font-size:13px;padding:6px}
-      
-      /* Buttons */
-      button{font-size:12px;padding:8px 10px;border-radius:6px}
-      button.primary{font-size:12px;padding:8px 10px}
-      button.ghost{font-size:12px;padding:6px 8px}
-      
-      /* Layout for cards */
       .layout{grid-template-columns:1fr;gap:12px;margin-top:12px}
-      .card{padding:10px;border-radius:8px}
-      .card h3{font-size:13px;margin-bottom:6px}
       .card canvas{height:200px !important;width:100% !important}
-      
-      /* Comments section */
-      #commentsSection{margin-top:14px}
-      #commentsSection h3{font-size:14px;margin-bottom:8px}
-      #commentsList{border-radius:6px}
-      #commentsList li{padding:10px 10px;font-size:12px}
-      .comment-meta{flex-direction:column;gap:4px;align-items:flex-start}
-      .comment-rating{font-size:12px}
-      .comment-date{font-size:11px}
-      .comment-text{font-size:12px;margin-top:4px}
-      .show-more-btn{font-size:11px;padding:4px 8px}
-      .ip-note{font-size:11px}
-      
-      /* Assistant UI - compact mobile view */
-      #gameAssistant{position:fixed;left:8px;right:8px;bottom:8px;width:auto;max-width:calc(100vw - 16px);z-index:99999}
+      #gameAssistant{position:fixed;left:8px;right:8px;bottom:8px;width:auto;max-width:calc(100vw - 16px)}
       #assistantCard{flex-direction:column;gap:8px;padding:10px;border-radius:10px}
       #assistantAvatar{width:40px;height:40px;flex:0 0 40px}
-      #assistantBody{flex:1;width:100%}
       #assistantTitle{font-size:12px}
-      #assistantSub{font-size:10px}
       #assistantBubble{font-size:11px;line-height:1.4;padding:10px;min-height:56px;word-wrap:break-word;overflow-wrap:break-word}
       #assistantFooter{flex-wrap:wrap;gap:6px}
       .assistantBtn{font-size:11px;padding:4px 6px}
-      #assistantMinimized{width:44px;height:44px;font-size:16px}
-      
-      /* Highlights and pulse animations */
-      .ga-highlight{border-radius:6px}
-      
-      /* Avoid overflow on small screens */
-      body{overflow-x:hidden}
-      .wrap{overflow:hidden}
     }
-
-    /* Extra small devices: below 480px */
     @media (max-width:479px){
       .wrap{margin:4px;padding:6px}
       .panel{padding:10px}
-      
       .profile img{width:40px;height:40px}
       .profile h2{font-size:13px}
       .profile p{font-size:10px}
-      
-      .top{gap:6px}
-      
       .option{font-size:10px;padding:5px 6px}
-      .option input{width:14px;height:14px}
-      
       textarea{min-height:50px;font-size:12px}
-      
       .card h3{font-size:12px}
       .card canvas{height:150px !important}
-      
+      button{font-size:11px;padding:6px 8px}
       #assistantCard{padding:8px}
       #assistantAvatar{width:36px;height:36px}
       #assistantTitle{font-size:11px}
       #assistantBubble{font-size:10px;padding:8px;min-height:50px;line-height:1.4}
-      
-      #overallAvg{font-size:15px}
-      
-      button{font-size:11px;padding:6px 8px}
     }
-
-    /* comments section */
     #commentsSection{margin-top:22px}
     #commentsSection h3{margin:0 0 10px 0;font-size:16px}
     #commentsList{list-style:none;padding:0;margin:0;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow-light)}
@@ -203,8 +109,6 @@
     .show-more-btn{background:transparent;border:none;color:var(--accent);cursor:pointer;font-weight:700;padding:6px 10px;border-radius:8px}
     .show-more-btn:hover{background:rgba(11,116,255,0.06)}
     .ip-note{font-size:12px;color:var(--muted);margin-top:8px}
-
-    /* Assistant styles */
     #gameAssistant{position:fixed;left:20px;bottom:20px;width:clamp(280px,30vw,360px);z-index:99999;font-family:Inter,system-ui,Arial}
     #assistantCard{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:14px;box-shadow:var(--shadow-heavy);padding:12px;border:var(--border-light)}
     #assistantAvatar{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 64px}
@@ -216,11 +120,9 @@
     .assistantBtn{background:transparent;border:1px solid #e6e9ef;padding:6px 8px;border-radius:8px;cursor:pointer;font-weight:700;color:#374151}
     .assistant-action-btn{padding:6px 8px;border-radius:8px;border:1px solid #e6e9ef;background:#fff;cursor:pointer;font-weight:700;color:#374151}
     #assistantMinimized{position:fixed;left:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,#0b74ff,#0066d6);color:#fff;display:none;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(11,116,255,0.18);z-index:99999;cursor:pointer;font-weight:800}
-    .ga-highlight{position:relative;box-shadow:0 0 0 4px rgba(11,116,255,0.12),0 8px 30px rgba(11,116,255,0.06);border-radius:10px;transition:box-shadow 0.25s ease,transform 0.15s ease;transform-origin:center;z-index:99998}
+    .ga-highlight{position:relative;box-shadow:0 0 0 4px rgba(11,116,255,0.12),0 8px 30px rgba(11,116,255,0.06);border-radius:10px;transition:box-shadow 0.25s ease,transform 0.15s ease;z-index:99998}
     .ga-pulse{animation:gaPulse 1.6s infinite}
     @keyframes gaPulse{0%{box-shadow:0 0 0 0 rgba(11,116,255,0.12)}70%{box-shadow:0 0 0 12px rgba(11,116,255,0.02)}100%{box-shadow:0 0 0 0 rgba(11,116,255,0.00)}}
-
-    /* comment fade */
     .comment-fade { animation: fadeIn 0.4s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
   </style>
@@ -307,10 +209,10 @@
     <div class="panel">
       <div class="top">
         <div class="profile">
-          <img src="../../assets/images/bam.jpg" alt="Profile">
+          <img src="../../assets/images/cayetano.jpg" alt="Profile">
           <div>
-            <h2>Paolo Benigno "Bam" Aquino IV</h2>
-            <p>Senator</p>
+            <h2>Pia Cayetano</h2>
+            <p>Senator of the Philippines</p>
           </div>
         </div>
 
@@ -418,7 +320,6 @@
   </div>
 
   <script>
-    // ---------------- Dashboard state ----------------
     let currentRating = "";
     let ratingsByMonth = Array.from({length:12}, () => []);
     let distributionCounts = [0,0,0,0,0];
@@ -426,9 +327,8 @@
     let commentsExpanded = false;
     let userIp = null;
 
-    const STORAGE_KEY = 'rental_feedback_v1';
+    const STORAGE_KEY = 'cayetano_feedback_v1';
 
-    // UI refs
     const dateInput = document.getElementById('ratingDate');
     const ratingValueEl = document.getElementById('rating-value');
     const overallAvgEl = document.getElementById('overallAvg');
@@ -439,17 +339,14 @@
     const ipNoteEl = document.getElementById('ipNote');
     const backBtn = document.getElementById('backBtn');
 
-    // set date automatically to today and disable editing
     (function setDateToToday(){
       try {
         dateInput.valueAsDate = new Date();
         dateInput.readOnly = true;
         dateInput.disabled = true;
-        dateInput.title = 'Date is set automatically to today';
       } catch(e){}
     })();
 
-    // load/save
     function loadFromStorage(){
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
@@ -478,7 +375,6 @@
       }
     }
 
-    // fetch public IP (best-effort)
     async function fetchUserIp(){
       try {
         const res = await fetch('https://api.ipify.org?format=json', {cache: 'no-store'});
@@ -496,17 +392,14 @@
       ipNoteEl.textContent = 'Could not detect IP reliably; uniqueness enforcement is disabled.';
     }
 
-    // ---------------- Charts placeholders (will be created in init) ----------------
     let ratingBar = null;
     let averageLine = null;
 
     function createCharts() {
-      // register plugin if available
       if (window.Chart && window.ChartDataLabels) {
         Chart.register(ChartDataLabels);
       }
 
-      // distribution bar
       const pieCtx = document.getElementById('ratingPie').getContext('2d');
       ratingBar = new Chart(pieCtx, {
         type: 'bar',
@@ -546,7 +439,6 @@
         }
       });
 
-      // monthly averages line
       const barCtx = document.getElementById('averageBar').getContext('2d');
       averageLine = new Chart(barCtx, {
         type: 'line',
@@ -616,14 +508,8 @@
       }
     }
 
-    // ---------------- Comments rendering ----------------
     function escapeHtml(str){
-      return String(str)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'",'&#39;');
+      return String(str).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
     }
 
     function renderComments(){
@@ -664,14 +550,11 @@
       }
     }
 
-    // ---------------- Radio handling & UI ----------------
     document.querySelectorAll('input[name="rating"]').forEach(radio=>{
       radio.addEventListener('change', (e)=>{
         currentRating = e.target.value;
         const label = e.target.parentElement.textContent.trim();
         ratingValueEl.textContent = `Selected: ${label} (Value: ${currentRating})`;
-
-        // highlight selected
         document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
         e.target.parentElement.classList.add('selected');
       });
@@ -693,7 +576,6 @@
 
     const indexMap = { "-10":0, "-5":1, "0":2, "5":3, "10":4 };
 
-    // ---------------- Assistant UI & helpers ----------------
     const assistantCard = document.getElementById('assistantCard');
     const bubble = document.getElementById('assistantBubble');
     const progressBar = document.querySelector('#assistantProgress > i');
@@ -703,16 +585,8 @@
     const voiceBtn = document.getElementById('assistantVoiceToggle');
     const minimized = document.getElementById('assistantMinimized');
 
-    let idx = 0;
-    let typingTimer = null;
-    let lineTimer = null;
-    let highlightEls = [];
-    let useVoice = true; // default to voice on
-    let playing = false;
-    let selectedFemaleVoice = null;
-    let notifyTimer = null;
+    let idx = 0, typingTimer = null, lineTimer = null, highlightEls = [], useVoice = true, playing = false, selectedFemaleVoice = null, notifyTimer = null;
 
-    // populate voices and pick a female voice if available
     function pickFemaleVoice() {
       if (!('speechSynthesis' in window)) return null;
       const voices = window.speechSynthesis.getVoices();
@@ -722,101 +596,46 @@
         const v = voices.find(x => x.name && x.name.toLowerCase().includes(name.toLowerCase()));
         if (v) return v;
       }
-      const fallback = voices.find(v => /female/i.test(v.name || '') || /female/i.test(v.voiceURI || ''));
-      return fallback || voices[0];
+      return voices.find(v => /female/i.test(v.name || '')) || voices[0];
     }
 
-    // ensure voices are loaded (robust)
     function ensureVoicesLoaded() {
       if (!('speechSynthesis' in window)) return;
       const setVoice = () => { selectedFemaleVoice = pickFemaleVoice() || window.speechSynthesis.getVoices()[0] || null; };
       const voices = window.speechSynthesis.getVoices();
-      if (voices.length === 0) {
-        window.speechSynthesis.addEventListener('voiceschanged', setVoice, { once: true });
-      } else {
-        setVoice();
-      }
+      voices.length === 0 ? window.speechSynthesis.addEventListener('voiceschanged', setVoice, { once: true }) : setVoice();
     }
 
-    // warm up voices on first user gesture (unlocks audio on some browsers)
     function warmUpVoicesOnUserGesture() {
       if (!('speechSynthesis' in window)) return;
       const handler = () => {
-        try {
-          selectedFemaleVoice = pickFemaleVoice() || window.speechSynthesis.getVoices()[0] || null;
-          const u = new SpeechSynthesisUtterance('');
-          u.volume = 0;
-          window.speechSynthesis.speak(u);
-        } catch (e) {}
+        try { selectedFemaleVoice = pickFemaleVoice() || window.speechSynthesis.getVoices()[0] || null; const u = new SpeechSynthesisUtterance(''); u.volume = 0; window.speechSynthesis.speak(u); } catch (e) {}
         window.removeEventListener('click', handler, { once: true });
       };
       window.addEventListener('click', handler, { once: true });
     }
     warmUpVoicesOnUserGesture();
 
-    // Typewriter for intro lines
     function typeLine(text, onComplete) {
-      bubble.textContent = '';
-      let i = 0;
-      const speed = 18;
-      clearInterval(typingTimer);
-      typingTimer = setInterval(() => {
-        bubble.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) {
-          clearInterval(typingTimer);
-          typingTimer = null;
-          onComplete && onComplete();
-        }
-      }, speed);
+      bubble.textContent = ''; let i = 0; const speed = 18; clearInterval(typingTimer);
+      typingTimer = setInterval(() => { bubble.textContent += text.charAt(i); i++; if (i >= text.length) { clearInterval(typingTimer); typingTimer = null; onComplete && onComplete(); }}, speed);
     }
 
-    function clearHighlights() {
-      highlightEls.forEach(el => {
-        el.classList.remove('ga-highlight','ga-pulse');
-        el.style.zIndex = '';
-      });
-      highlightEls = [];
-    }
+    function clearHighlights() { highlightEls.forEach(el => { el.classList.remove('ga-highlight','ga-pulse'); el.style.zIndex = ''; }); highlightEls = []; }
 
     function applyHighlight(selector) {
       clearHighlights();
       if (!selector) return;
-      try {
-        const el = document.querySelector(selector);
-        if (!el) return;
-        el.classList.add('ga-highlight','ga-pulse');
-        el.style.zIndex = 99998;
-        highlightEls.push(el);
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } catch (e) {}
+      try { const el = document.querySelector(selector); if (!el) return; el.classList.add('ga-highlight','ga-pulse'); el.style.zIndex = 99998; highlightEls.push(el); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
     }
 
-    function setProgress(pct) {
-      progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%';
-    }
+    function setProgress(pct) { progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%'; }
 
     function speak(text) {
-      if (!useVoice) return console.debug('Voice disabled');
-      if (!('speechSynthesis' in window)) return console.warn('No speechSynthesis support');
-      try {
-        window.speechSynthesis.cancel();
-        if (!selectedFemaleVoice) selectedFemaleVoice = pickFemaleVoice() || window.speechSynthesis.getVoices()[0] || null;
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.rate = 1;
-        utter.pitch = 1;
-        utter.volume = 1;
-        utter.lang = 'en-US';
-        if (selectedFemaleVoice) utter.voice = selectedFemaleVoice;
-        utter.onend = () => console.debug('Speech finished');
-        utter.onerror = (e) => console.error('Speech error', e);
-        window.speechSynthesis.speak(utter);
-      } catch (e) {
-        console.error('speak() failed', e);
-      }
+      if (!useVoice) return; if (!('speechSynthesis' in window)) return;
+      try { window.speechSynthesis.cancel(); if (!selectedFemaleVoice) selectedFemaleVoice = pickFemaleVoice() || window.speechSynthesis.getVoices()[0] || null; const utter = new SpeechSynthesisUtterance(text); utter.rate = 1; utter.pitch = 1; utter.volume = 1; utter.lang = 'en-US'; if (selectedFemaleVoice) utter.voice = selectedFemaleVoice; window.speechSynthesis.speak(utter); } catch (e) {}
     }
 
-    // Intro script lines
     const scriptLines = [
       { text: "Welcome, I'm Jane, your guide for this dashboard.", target: null, delay: 1600 },
       { text: "Use the rating options to share feedback — pick the option that matches how you feel.", target: '#options', delay: 4600 },
@@ -827,251 +646,33 @@
       { text: "That's it — try submitting a rating now. Click Replay to hear this again.", target: null, delay: 1800 }
     ];
 
-    // Intro controller
-    function playIntro(startIndex = 0) {
-      stopIntro();
-      idx = startIndex;
-      playing = true;
-      assistantCard.style.display = 'flex';
-      minimized.style.display = 'none';
-      runNext();
-    }
-
-    function stopIntro() {
-      playing = false;
-      clearInterval(typingTimer);
-      clearTimeout(lineTimer);
-      clearHighlights();
-      bubble.textContent = '';
-      setProgress(0);
-      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e){}
-    }
-
+    function playIntro(startIndex = 0) { stopIntro(); idx = startIndex; playing = true; assistantCard.style.display = 'flex'; minimized.style.display = 'none'; runNext(); }
+    function stopIntro() { playing = false; clearInterval(typingTimer); clearTimeout(lineTimer); clearHighlights(); bubble.textContent = ''; setProgress(0); try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e){} }
     function runNext() {
       if (!playing) return;
-      if (idx >= scriptLines.length) {
-        setProgress(100);
-        playing = false;
-        return;
-      }
-      const line = scriptLines[idx];
-      applyHighlight(line.target);
-      typeLine(line.text, () => {
-        speak(line.text);
-        const pct = Math.round(((idx + 1) / scriptLines.length) * 100);
-        setProgress(pct);
-        const jitter = Math.floor(Math.random() * 600) - 300;
-        lineTimer = setTimeout(() => {
-          idx++;
-          runNext();
-        }, (line.delay || 1800) + jitter);
+      if (idx >= scriptLines.length) { setProgress(100); playing = false; return; }
+      const line = scriptLines[idx]; applyHighlight(line.target);
+      typeLine(line.text, () => { speak(line.text); const pct = Math.round(((idx + 1) / scriptLines.length) * 100); setProgress(pct); const jitter = Math.floor(Math.random() * 600) - 300;
+        lineTimer = setTimeout(() => { idx++; runNext(); }, (line.delay || 1800) + jitter);
       });
     }
 
-    // assistant controls
-    const replayBtnEl = replayBtn;
-    replayBtnEl.addEventListener('click', () => {
-      playIntro(0);
-    });
+    replayBtn.addEventListener('click', () => playIntro(0));
+    closeBtn.addEventListener('click', () => { stopIntro(); assistantCard.style.display = 'none'; minimized.style.display = 'flex'; });
+    minimized.addEventListener('click', () => { assistantCard.style.display = 'flex'; minimized.style.display = 'none'; });
+    voiceBtn.addEventListener('click', () => { useVoice = !useVoice; voiceBtn.textContent = useVoice ? 'Voice On' : 'Voice Off'; });
+    skipBtn.addEventListener('click', () => { stopIntro(); bubble.textContent = 'Intro skipped. You can replay anytime.'; setProgress(0); if (useVoice) speak('Intro skipped'); clearTimeout(notifyTimer); notifyTimer = setTimeout(() => {bubble.textContent = ''; clearHighlights();}, 4000); });
 
-    closeBtn.addEventListener('click', () => {
-      stopIntro();
-      assistantCard.style.display = 'none';
-      minimized.style.display = 'flex';
-      try { sessionStorage.setItem('ga_closed', '1'); } catch(e){}
-    });
+    (function initAssistant(){ const closed = sessionStorage.getItem('ga_closed'); if (!closed) { setTimeout(() => playIntro(0), 700); } else { assistantCard.style.display = 'none'; minimized.style.display = 'flex'; }})();
 
-    minimized.addEventListener('click', () => {
-      assistantCard.style.display = 'flex';
-      minimized.style.display = 'none';
-    });
+    function assistantNotify(message, { speakIt = true, timeout = 4000 } = {}) { stopIntro(); bubble.textContent = message; if (speakIt) speak(message); setProgress(0); clearTimeout(notifyTimer); if (timeout > 0) { notifyTimer = setTimeout(() => {bubble.textContent = ''; clearHighlights();}, timeout); }}
 
-    voiceBtn.addEventListener('click', () => {
-      useVoice = !useVoice;
-      voiceBtn.textContent = useVoice ? 'Voice On' : 'Voice Off';
-      if (useVoice && 'speechSynthesis' in window) {
-        selectedFemaleVoice = pickFemaleVoice();
-        const u = new SpeechSynthesisUtterance('Voice enabled');
-        u.volume = 0;
-        try { window.speechSynthesis.speak(u); } catch(e){}
-      }
-    });
+    document.getElementById('submit').addEventListener('click', async ()=>{ const reviewText = document.getElementById('review').value.trim(); if (!currentRating) { assistantNotify('Please select a rating'); applyHighlight('#options'); return; } if (userIp === null) { await fetchUserIp(); } if (userIp) { const already = comments.some(c => c.ip && c.ip === userIp); if (already) { assistantNotify('One rating per IP allowed'); return; }} const selectedDate = dateInput.valueAsDate ? new Date(dateInput.valueAsDate) : new Date(); const monthIndex = selectedDate.getMonth(); const ratingNum = Number(currentRating); ratingsByMonth[monthIndex].push(ratingNum); if (indexMap.hasOwnProperty(currentRating)) { distributionCounts[indexMap[currentRating]] += 1; } comments.push({ rating: ratingNum, date: selectedDate.toISOString(), text: reviewText, ip: userIp || null }); saveToStorage(); refreshCharts(); renderComments(); assistantNotify(`Rating ${ratingNum} saved`, { speakIt: true, timeout: 4000 }); document.querySelectorAll('input[name="rating"]').forEach(r=>r.checked=false); currentRating = ""; ratingValueEl.textContent = 'No rating selected'; document.getElementById('review').value = ''; });
 
-    // Skip button: stop the intro and show a short message
-    skipBtn.addEventListener('click', () => {
-      stopIntro();
-      bubble.textContent = 'Intro skipped. You can replay anytime.';
-      setProgress(0);
-      if (useVoice) speak('Intro skipped. You can replay anytime.');
-      clearTimeout(notifyTimer);
-      notifyTimer = setTimeout(() => {
-        bubble.textContent = '';
-        clearHighlights();
-      }, 4000);
-    });
+    toggleCommentsBtn.addEventListener('click', ()=>{ commentsExpanded = !commentsExpanded; renderComments(); });
+    backBtn.addEventListener('click', () => { window.location.href = '/index.html'; });
 
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#gameAssistant')) {
-        clearHighlights();
-      }
-    }, { capture: true });
-
-    (function initAssistant(){
-      const closed = sessionStorage.getItem('ga_closed');
-      if (!closed) {
-        setTimeout(() => playIntro(0), 700);
-      } else {
-        assistantCard.style.display = 'none';
-        minimized.style.display = 'flex';
-      }
-    })();
-
-    // ---------------- Assistant notifications API ----------------
-    function assistantNotify(message, { speakIt = true, timeout = 4000 } = {}) {
-      stopIntro();
-      bubble.textContent = message;
-      if (speakIt) speak(message);
-      setProgress(0);
-      clearTimeout(notifyTimer);
-      if (timeout > 0) {
-        notifyTimer = setTimeout(() => {
-          bubble.textContent = '';
-          clearHighlights();
-        }, timeout);
-      }
-    }
-
-    function assistantConfirm(message, { proceedLabel = 'Proceed', cancelLabel = 'Cancel' } = {}) {
-      stopIntro();
-      bubble.textContent = message;
-      speak(message);
-      const actions = document.createElement('div');
-      actions.style.display = 'flex';
-      actions.style.gap = '8px';
-      actions.style.marginTop = '8px';
-      const cancelBtn = document.createElement('button');
-      cancelBtn.className = 'assistant-action-btn';
-      cancelBtn.textContent = cancelLabel;
-      const proceedBtn = document.createElement('button');
-      proceedBtn.className = 'assistant-action-btn';
-      proceedBtn.textContent = proceedLabel;
-      actions.appendChild(cancelBtn);
-      actions.appendChild(proceedBtn);
-      bubble.appendChild(actions);
-
-      return new Promise(resolve => {
-        function cleanup() {
-          try { bubble.removeChild(actions); } catch(e){}
-        }
-        proceedBtn.addEventListener('click', () => { cleanup(); resolve(true); }, { once: true });
-        cancelBtn.addEventListener('click', () => { cleanup(); resolve(false); }, { once: true });
-      });
-    }
-
-    // ---------------- Submit handler (uses assistant for messages) ----------------
-    document.getElementById('submit').addEventListener('click', async ()=>{
-      const reviewText = document.getElementById('review').value.trim();
-      if (!currentRating) {
-        assistantNotify('Please select a rating before submitting. I highlighted the rating options for you.', { speakIt: true, timeout: 5000 });
-        applyHighlight('#options');
-        return;
-      }
-
-      if (userIp === null) {
-        await fetchUserIp();
-      }
-
-      if (userIp) {
-        const already = comments.some(c => c.ip && c.ip === userIp);
-        if (already) {
-          assistantNotify('A rating has already been submitted from this IP address. Only one rating per IP is allowed.', { speakIt: true, timeout: 6000 });
-          return;
-        }
-      } else {
-        const proceed = await assistantConfirm('Could not detect your IP address. Uniqueness cannot be enforced. Do you want to proceed with submission?', { proceedLabel: 'Yes, submit', cancelLabel: 'Cancel' });
-        if (!proceed) {
-          assistantNotify('Submission cancelled. If you want to try again, ensure your network allows IP detection.', { speakIt: true, timeout: 5000 });
-          return;
-        }
-      }
-
-      const selectedDate = dateInput.valueAsDate ? new Date(dateInput.valueAsDate) : new Date();
-      const monthIndex = selectedDate.getMonth();
-      const ratingNum = Number(currentRating);
-
-      ratingsByMonth[monthIndex].push(ratingNum);
-
-      if (indexMap.hasOwnProperty(currentRating)) {
-        distributionCounts[indexMap[currentRating]] += 1;
-      }
-
-      comments.push({
-        rating: ratingNum,
-        date: selectedDate.toISOString(),
-        text: reviewText,
-        ip: userIp || null
-      });
-
-      saveToStorage();
-      refreshCharts();
-      renderComments();
-
-      assistantNotify(`Submitted. Rating ${ratingNum} saved for ${selectedDate.toLocaleDateString()}. ${reviewText ? 'Your review was saved.' : 'No review provided.'}`, { speakIt: true, timeout: 6000 });
-
-      document.querySelectorAll('input[name="rating"]').forEach(r=>r.checked=false);
-      currentRating = "";
-      ratingValueEl.textContent = 'No rating selected';
-      document.getElementById('review').value = '';
-      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-    });
-
-    // toggle comments
-    toggleCommentsBtn.addEventListener('click', ()=>{
-      commentsExpanded = !commentsExpanded;
-      renderComments();
-    });
-
-    // Back button to index.html
-    backBtn.addEventListener('click', () => {
-      window.location.href = '/index.html';
-    });
-
-    // ---------------- Initialization ----------------
-    (async function init(){
-      loadFromStorage();
-      await fetchUserIp();
-      ensureVoicesLoaded();
-      createCharts();
-      refreshCharts();
-      renderComments();
-    })();
-
-    // expose assistant API (optional)
-    window.GameAssistant = {
-      play: () => playIntro(0),
-      replay: () => playIntro(0),
-      stop: () => stopIntro(),
-      notify: (msg) => assistantNotify(msg),
-      confirm: (msg) => assistantConfirm(msg),
-      toggleVoice: () => { useVoice = !useVoice; return useVoice; },
-      setProfile: ({ name, avatarUrl }) => {
-        if (name) document.getElementById('assistantTitle').textContent = name;
-        if (avatarUrl) {
-          const av = document.getElementById('assistantAvatar');
-          av.src = avatarUrl;
-        }
-      }
-    };
-
-    // keyboard shortcut to toggle assistant (G)
-    document.addEventListener('keydown', (e) => {
-      if (e.key.toLowerCase() === 'g' && !e.metaKey && !e.ctrlKey && !e.altKey) {
-        const isHidden = assistantCard.style.display === 'none' || assistantCard.style.display === '';
-        assistantCard.style.display = isHidden ? 'flex' : 'none';
-        minimized.style.display = isHidden ? 'none' : 'flex';
-        assistantNotify(isHidden ? 'Assistant opened.' : 'Assistant minimized.', { speakIt: false, timeout: 2000 });
-      }
-    });
+    (async function init(){ loadFromStorage(); await fetchUserIp(); ensureVoicesLoaded(); createCharts(); refreshCharts(); renderComments(); })();
   </script>
 </body>
 </html>

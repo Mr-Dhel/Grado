@@ -307,9 +307,9 @@
     <div class="panel">
       <div class="top">
         <div class="profile">
-          <img src="../../assets/images/bam.jpg" alt="Profile">
+          <img src="../../assets/images/ping.jpg" alt="Profile">
           <div>
-            <h2>Paolo Benigno "Bam" Aquino IV</h2>
+            <h2>Panfilo "Ping" M. Lacson</h2>
             <p>Senator</p>
           </div>
         </div>
@@ -317,9 +317,9 @@
         <div style="display:flex;gap:12px;align-items:center">
           <div style="text-align:right">
             <div style="color:var(--muted);font-size:13px">Overall</div>
-            <div id="overallAvg" style="font-weight:700;font-size:18px">Average ‚Äî</div>
+            <div id="overallAvg" style="font-weight:700;font-size:18px">Average ó</div>
           </div>
-          <button id="backBtn" class="ghost" aria-label="Back to main">‚Üê Back to Main</button>
+          <button id="backBtn" class="ghost" aria-label="Back to main">? Back to Main</button>
         </div>
       </div>
 
@@ -426,7 +426,7 @@
     let commentsExpanded = false;
     let userIp = null;
 
-    const STORAGE_KEY = 'rental_feedback_v1';
+    const STORAGE_KEY = 'ping_feedback_v1';
 
     // UI refs
     const dateInput = document.getElementById('ratingDate');
@@ -486,7 +486,7 @@
         const data = await res.json();
         if (data && data.ip) {
           userIp = data.ip;
-          ipNoteEl.textContent = `Your IP detected: ${userIp} ‚Äî one rating allowed per IP.`;
+          ipNoteEl.textContent = `Your IP detected: ${userIp} ó one rating allowed per IP.`;
           return;
         }
       } catch (e) {
@@ -607,7 +607,7 @@
 
         const overallAvg = computeOverallAverage();
         averageLine.data.datasets[0].label = `Average: ${overallAvg ? overallAvg.toFixed(2) : '0.00'}`;
-        overallAvgEl.textContent = `Average: ${overallAvg ? overallAvg.toFixed(2) : '‚Äî'}`;
+        overallAvgEl.textContent = `Average: ${overallAvg ? overallAvg.toFixed(2) : 'ó'}`;
         if (overallAvg > 0) overallAvgEl.style.color = '#0b74ff';
         else if (overallAvg < 0) overallAvgEl.style.color = '#ff4d4d';
         else overallAvgEl.style.color = '#9ca3af';
@@ -819,12 +819,12 @@
     // Intro script lines
     const scriptLines = [
       { text: "Welcome, I'm Jane, your guide for this dashboard.", target: null, delay: 1600 },
-      { text: "Use the rating options to share feedback ‚Äî pick the option that matches how you feel.", target: '#options', delay: 4600 },
+      { text: "Use the rating options to share feedback ó pick the option that matches how you feel.", target: '#options', delay: 4600 },
       { text: "The date is set automatically to today. Write an optional review in the box.", target: '#review', delay: 3200 },
       { text: "Press Submit to save your rating. I will update the charts and comments below.", target: '#submit', delay: 3300 },
-      { text: "This panel shows distribution counts and monthly averages ‚Äî watch them change as you add ratings.", target: '.layout', delay: 5200 },
+      { text: "This panel shows distribution counts and monthly averages ó watch them change as you add ratings.", target: '.layout', delay: 5200 },
       { text: "Only the five most recent reviews are shown. Click Show all to expand the list.", target: '#commentsSection', delay: 4200 },
-      { text: "That's it ‚Äî try submitting a rating now. Click Replay to hear this again.", target: null, delay: 1800 }
+      { text: "That's it ó try submitting a rating now. Click Replay to hear this again.", target: null, delay: 1800 }
     ];
 
     // Intro controller

@@ -2,50 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pilipinas Grado</title>
   <style>
     body {
-  background: url("assets/images/philippines-bg.png") no-repeat center center fixed;
-  background-size: cover;
-}
-
-    /* Sidebar */
-    .sidebar {
-  width: 220px;
-  background: url("assets/images/grado.png") no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-}
-
-
-    /*.sidebar h1 {
-      font-size: 2rem;
       margin: 0;
-      color: #f1c40f;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: url("assets/images/philippines-bg.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #12202e;
     }
 
-    .sidebar p {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #ecf0f1;
-      text-align: center;
-    }
-
-    /* Main content */
     .main {
-      flex: 1;
-      margin-left: 220px; /* space for sidebar */
-      padding: 20px;
+      width: min(1160px, calc(100% - 24px));
+      margin: 14px auto;
+      padding: 22px;
+      border: 1px solid rgba(124, 181, 255, 0.32);
+      border-radius: 16px;
+      background: rgba(7, 18, 40, 0.76);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .page-header {
+      text-align: center;
+      margin: 8px 0 24px 0;
+      padding: 14px 12px;
+      border: 1px solid rgba(166, 204, 245, 0.35);
+      border-radius: 12px;
+      background: rgba(10, 25, 52, 0.58);
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 1.95rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .page-tagline {
+      margin: 8px 0 0 0;
+      font-size: 0.98rem;
+      opacity: 0.95;
+    }
+
+    .section-title {
+      margin: 26px 0 10px 0;
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.25px;
+    }
+
+    .section-title-senators {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: 0.35px;
+    }
+
+    .bridge-nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .bridge-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #0b74ff, #005ab8);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0, 72, 156, 0.28);
     }
 
     .row {
@@ -58,6 +87,7 @@
 
     .face {
       position: relative;
+      display: inline-block;
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease;
@@ -71,13 +101,13 @@
       height: 150px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .face:hover img {
       transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(0,120,215,0.4);
+      box-shadow: 0 8px 20px rgba(0, 120, 215, 0.4);
     }
 
     .overlay {
@@ -85,7 +115,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
       color: #fff;
       padding: 10px;
       text-align: center;
@@ -98,19 +128,205 @@
       opacity: 1;
     }
 
-    .bar-fill {
-  height: 26px;
-  background: linear-gradient(to right, #0078d7, #2ecc71);
-  color: #fff;
-  text-align: right;
-  padding-right: 10px;
-  line-height: 26px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-  width: 0; /* start collapsed */
-  transition: width 1.2s ease-in-out;
-}
+    .assistant-card {
+      max-width: 680px;
+      margin: 20px auto 30px auto;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 67, 130, 0.2);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(4px);
+    }
+
+    .assistant-title {
+      margin: 0 0 8px 0;
+      font-size: 1.35rem;
+      color: #003b73;
+    }
+
+    .assistant-source {
+      margin: 0 0 16px 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .assistant-source a {
+      color: #005fa3;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .assistant-source a:hover {
+      text-decoration: underline;
+    }
+
+    .assistant-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #203549;
+    }
+
+    .assistant-select {
+      width: 100%;
+      border: 1px solid #a8bfd8;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .assistant-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .assistant-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 16px;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .assistant-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .assistant-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+      transform: none;
+    }
+
+    .know-btn {
+      background: linear-gradient(135deg, #0466c8, #0353a4);
+    }
+
+    .rate-btn {
+      background: linear-gradient(135deg, #f48c06, #dc2f02);
+    }
+
+    .assistant-status {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: #3b4f63;
+      min-height: 24px;
+    }
+
+    .assistant-result {
+      margin-top: 10px;
+      background: #f4f9ff;
+      border-left: 4px solid #1f7ad1;
+      border-radius: 8px;
+      padding: 12px;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+
+    #gameAssistant {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 99999;
+      width: min(520px, calc(100vw - 40px));
+      pointer-events: auto;
+    }
+
+    #assistantCard {
+      display: none;
+      gap: 12px;
+      align-items: flex-start;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(11, 116, 255, 0.18);
+      padding: 12px;
+      border: 1px solid #e6e9ef;
+    }
+
+    #assistantAvatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex: 0 0 64px;
+    }
+
+    #assistantBody {
+      flex: 1;
+    }
+
+    #assistantTitle {
+      font-weight: 800;
+      font-size: 14px;
+      color: #0353a4;
+    }
+
+    #assistantSub {
+      font-size: 12px;
+      color: #5f7388;
+    }
+
+    #assistantBubble {
+      margin-top: 8px;
+      background: #f3f6fb;
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: #111827;
+      font-size: 13px;
+      line-height: 1.35;
+      min-height: 48px;
+      white-space: pre-line;
+    }
+
+    #assistantFooter {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .assistantBtn {
+      background: transparent;
+      border: 1px solid #e6e9ef;
+      padding: 6px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .assistant-action-btn {
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 1px solid #e6e9ef;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    #assistantMinimized {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #0b74ff, #0066d6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(11, 116, 255, 0.18);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
 
     @keyframes fadeInUp {
       to {
@@ -118,87 +334,301 @@
         transform: translateY(0);
       }
     }
+
+    @media (max-width: 1024px) {
+      .main {
+        width: min(100%, calc(100% - 16px));
+        padding: 15px;
+      }
+
+      .row {
+        gap: 25px;
+        margin: 25px 0;
+      }
+
+      .face img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .overlay {
+        padding: 8px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .main {
+        width: calc(100% - 12px);
+        margin: 6px auto;
+        padding: 10px;
+      }
+
+      .row {
+        gap: 15px;
+        margin: 15px 0;
+        justify-content: center;
+      }
+
+      .face {
+        flex: 0 1 auto;
+      }
+
+      .face img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .overlay {
+        padding: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .face:hover img {
+        transform: scale(1.08);
+        box-shadow: 0 6px 15px rgba(0, 120, 215, 0.3);
+      }
+
+      .assistant-card {
+        margin: 12px 0 20px 0;
+        padding: 14px;
+      }
+
+      #assistantCard {
+        flex-direction: column;
+      }
+
+      #assistantAvatar {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+      }
+
+    }
+
+    @media (max-width: 479px) {
+      .main {
+        padding: 8px;
+      }
+
+      .row {
+        gap: 12px;
+        margin: 12px 0;
+      }
+
+      .face img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .overlay {
+        padding: 4px;
+        font-size: 0.65rem;
+        font-weight: 600;
+      }
+
+      .face:hover img {
+        transform: scale(1.05);
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+    }
   </style>
+<style id="dhel-theme">
+  :root {
+    --dhel-ink: #eaf2ff;
+    --dhel-muted: #b9c9e7;
+    --dhel-panel: rgba(7, 18, 40, 0.88);
+    --dhel-border: rgba(110, 170, 255, 0.35);
+    --dhel-accent: #5eb0ff;
+  }
+  body {
+    background:
+      radial-gradient(circle at 20% 15%, #284f8d 0, transparent 35%),
+      radial-gradient(circle at 80% 70%, #133566 0, transparent 28%),
+      linear-gradient(150deg, #040b1b, #0a1f47 55%, #08172e 100%) !important;
+    color: var(--dhel-ink) !important;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+    opacity: 0.3;
+    z-index: 0;
+  }
+  .main, .container, .layout, .card, .chart-box, .panel, .chartCard, .rental-box, .profile-card, .content-box, form {
+    background: var(--dhel-panel) !important;
+    border: 1px solid var(--dhel-border) !important;
+    border-radius: 14px !important;
+    color: var(--dhel-ink) !important;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(6px);
+  }
+  .sidebar {
+    background: rgba(6, 21, 48, 0.85) !important;
+    border-right: 1px solid var(--dhel-border) !important;
+  }
+  .face img {
+    box-shadow: 0 0 0 2px rgba(143, 198, 255, 0.35), 0 10px 20px rgba(0, 0, 0, 0.45) !important;
+  }
+  .overlay {
+    background: linear-gradient(to top, rgba(4, 12, 24, 0.9), transparent) !important;
+  }
+  button, .assistantBtn, .btn, input[type="button"], input[type="submit"] {
+    background: rgba(6, 21, 48, 0.9) !important;
+    color: #e8f3ff !important;
+    border: 1px solid rgba(160, 203, 255, 0.45) !important;
+    border-radius: 10px !important;
+  }
+  input, textarea, select {
+    background: rgba(14, 35, 72, 0.65) !important;
+    color: #edf4ff !important;
+    border: 1px solid rgba(124, 181, 255, 0.35) !important;
+  }
+  a { color: #9ad0ff !important; }
+  h1, h2, h3, h4, h5, h6, p, label, li, span, div { color: #ffffff !important; }
+  .overlay, #assistantSub, #assistantBubble, .assistantBtn, .assistant-action-btn, .bridge-btn {
+    color: #ffffff !important;
+  }
+  #assistantCard, #assistantBubble, #assistantFooter, #assistantProgress {
+    background-color: rgba(14, 35, 72, 0.75) !important;
+    border-color: rgba(124, 181, 255, 0.35) !important;
+  }
+</style>
+<style id="global-white-text">
+  body, h1, h2, h3, h4, h5, h6, p, label, li, span, div, a, button, th, td, small, strong {
+    color: #ffffff !important;
+  }
+  input, textarea, select, option {
+    color: #ffffff !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(255,255,255,0.8) !important;
+  }
+</style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="main">
+    <header class="page-header">
+      <h1 class="page-title">Grado Pilipinas</h1>
+      <p class="page-tagline">A citizen-centered ratings and profile guide for national leaders.</p>
+    </header>
+    <div class="row">
+      <div class="face" onclick="openJaneForKey('President')">
+        <img src="assets/images/marcos.jpg" alt="President">
+        <div class="overlay">Ferdinand "Bongbong" Marcos Jr.</div>
+      </div>
+    </div>
+    <h2 class="section-title">President</h2>
+
+    <div class="row">
+      <div class="face" onclick="openJaneForKey('Vice_President')">
+        <img src="assets/images/sara.jpg" alt="Vice President">
+        <div class="overlay">Sara Zimmerman Duterte-Carpio</div>
+      </div>
+    </div>
+    <h2 class="section-title">Vice President</h2>
+
+    <h2 class="section-title section-title-senators">Senators</h2>
+    <div class="row">
+      <div class="face" onclick="openJaneForKey('Bam')">
+        <img src="assets/images/bam.jpg" alt="Bam">
+        <div class="overlay">Paolo Benigno "Bam" Aquino IV</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Bong')">
+        <img src="assets/images/bong_go.jpg" alt="Bong">
+        <div class="overlay">Christopher Lawrence "Bong" T. Go</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Bato')">
+        <img src="assets/images/bato.jpg" alt="Bato">
+        <div class="overlay">Ronald "Bato" Dela Rosa</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Tulfo')">
+        <img src="assets/images/Erwin.png" alt="Tulfo">
+        <div class="overlay">Erwin Teshiba Tulfo</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Kiko')">
+        <img src="assets/images/kiko.png" alt="Kiko">
+        <div class="overlay">Kiko Pangilinan</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="face" onclick="openJaneForKey('Marcoleta')">
+        <img src="assets/images/marcoleta.jpg" alt="Marcoleta">
+        <div class="overlay">Rodante D. Marcoleta</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Camille')">
+        <img src="assets/images/camille.jpg" alt="Camille">
+        <div class="overlay">Camille A. Villar</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Cayetano')">
+        <img src="assets/images/cayetano.jpg" alt="Cayetano">
+        <div class="overlay">Pia Cayetano</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Imee')">
+        <img src="assets/images/imee.png" alt="Imee">
+        <div class="overlay">Imee R. Marcos</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Lapid')">
+        <img src="assets/images/lapid.png" alt="Lapid">
+        <div class="overlay">Manuel "Lito" Mercado Lapid</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="face" onclick="openJaneForKey('Ping')">
+        <img src="assets/images/ping.jpg" alt="Ping">
+        <div class="overlay">Panfilo "Ping" M. Lacson</div>
+      </div>
+      <div class="face" onclick="openJaneForKey('Sotto')">
+        <img src="assets/images/sotto.png" alt="Senator Sotto">
+        <div class="overlay">Vicente C. Sotto III</div>
+      </div>
+    </div>
+
+    <div class="bridge-nav">
+      <a id="developerBridgeBtn" class="bridge-btn" href="sub_pages/developer/profile.html">Meet Developer Dhel</a>
+    </div>
   </div>
 
-  <!-- Main content -->
-  <div class="main">
-    <!-- Top row (2 faces) -->
-    <div class="row">
-      <div class="face" onclick="goToHeroPage('President')">
-        <img src="assets/images/marcos.jpg" alt="President">
-        <div class="overlay">President</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Vice_President')">
-        <img src="assets/images/sara.jpg" alt="Vice President">
-        <div class="overlay">Vice President</div>
-      </div>
-    </div>
-
-    <!-- Second row (5 faces) -->
-    <div class="row">
-      <div class="face" onclick="goToHeroPage('Bam')">
-        <img src="assets/images/bam.jpg" alt="Bam">
-        <div class="overlay">Bam</div>
-        
-      </div>
-      <div class="face" onclick="goToHeroPage('Bong')">
-        <img src="assets/images/bong_go.jpg" alt="Bong">
-        <div class="overlay">Bong</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Bato')">
-        <img src="assets/images/bato.jpg" alt="Bato">
-        <div class="overlay">Bato</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Tulfo')">
-        <img src="assets/images/tulfo.png" alt="Tulfo">
-        <div class="overlay">Tulfo</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Kiko')">
-        <img src="assets/images/kiko.png" alt="Kiko">
-        <div class="overlay">Kiko</div>
+  <div id="gameAssistant" aria-live="polite" aria-atomic="false">
+    <div id="assistantCard" role="dialog" aria-label="Guide">
+      <img id="assistantAvatar" src="assets/images/ai.png" alt="Jane avatar">
+      <div id="assistantBody">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <div>
+            <div id="assistantTitle">Jane</div>
+            <div id="assistantSub">Quick tour & tips</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="assistantReplay" class="assistantBtn" title="Replay intro">Replay</button>
+            <button id="assistantClose" class="assistantBtn" title="Close">Close</button>
+          </div>
+        </div>
+        <div id="assistantBubble" aria-live="polite" aria-atomic="true"></div>
+        <div id="assistantFooter">
+          <div id="assistantProgress" style="flex:1;height:6px;background:rgba(11,116,255,0.12);border-radius:6px;overflow:hidden"><i style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#0b74ff,#66b3ff);transition:width 0.25s linear"></i></div>
+          <button id="assistantVoiceToggle" class="assistantBtn" title="Toggle voice">Female Voice On</button>
+        </div>
       </div>
     </div>
-
-    <!-- Third row (5 faces) -->
-    <div class="row">
-      <div class="face" onclick="goToHeroPage('Marcoleta')">
-        <img src="assets/images/marcoleta.jpg" alt="Marcoleta">
-        <div class="overlay">Marcoleta</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Camille')">
-        <img src="assets/images/camille.jpg" alt="Camille">
-        <div class="overlay">Camille</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Cayetano')">
-        <img src="assets/images/cayetano.jpg" alt="Cayetano">
-        <div class="overlay">Cayetano</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Imee')">
-        <img src="assets/images/imee.png" alt="Imee">
-        <div class="overlay">Imee</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Lapid')">
-        <img src="assets/images/lapid.png" alt="Lapid">
-        <div class="overlay">Lapid</div>
-      </div>
-    </div>
-
-    <!-- Bottom row (2 faces) -->
-    <div class="row">
-      <div class="face" onclick="goToHeroPage('Ping')">
-        <img src="assets/images/ping.jpg" alt="Ping">
-        <div class="overlay">Ping</div>
-      </div>
-      <div class="face" onclick="goToHeroPage('Tulfo2')">
-        <img src="assets/images/tulfo.png" alt="Tulfo Again">
-        <div class="overlay">Tulfo</div>
-      </div>
-    </div>
+    <div id="assistantMinimized" aria-hidden="true">S</div>
   </div>
 
   <script>
@@ -216,12 +646,287 @@
       Imee: "sub_pages/senators/imee.html",
       Lapid: "sub_pages/senators/lapid.html",
       Ping: "sub_pages/senators/ping.html",
-      Tulfo2: "sub_pages/senators/tulfo2.html"
+      Sotto: "sub_pages/senators/sotto.html"
     };
 
     function goToHeroPage(heroKey) {
       window.location.href = heroPages[heroKey];
     }
+
+    const janeSourceUrl = "https://en.wikipedia.org/wiki/List_of_senators_elected_in_the_2025_Philippine_Senate_election";
+    const personProfiles = {
+      President: { name: "Ferdinand \"Bongbong\" Marcos Jr.", title: "Bongbong Marcos" },
+      Vice_President: { name: "Sara Zimmerman Duterte-Carpio", title: "Sara Duterte" },
+      Bam: { name: "Paolo Benigno \"Bam\" Aquino IV", title: "Bam Aquino" },
+      Bong: { name: "Christopher Lawrence \"Bong\" Go", title: "Bong Go" },
+      Bato: { name: "Ronald \"Bato\" dela Rosa", title: "Bato dela Rosa" },
+      Tulfo: { name: "Erwin Tulfo", title: "Erwin Tulfo" },
+      Kiko: { name: "Kiko Pangilinan", title: "Kiko Pangilinan" },
+      Marcoleta: { name: "Rodante Marcoleta", title: "Rodante Marcoleta" },
+      Camille: { name: "Camille Villar", title: "Camille Villar" },
+      Cayetano: { name: "Pia Cayetano", title: "Pia Cayetano" },
+      Imee: { name: "Imee Marcos", title: "Imee Marcos" },
+      Lapid: { name: "Lito Lapid", title: "Lito Lapid" },
+      Ping: { name: "Panfilo Lacson", title: "Panfilo Lacson" },
+      Sotto: { name: "Vicente Sotto III", title: "Tito Sotto" }
+    };
+
+    const assistantCard = document.getElementById("assistantCard");
+    const bubble = document.getElementById("assistantBubble");
+    const progressBar = document.querySelector("#assistantProgress > i");
+    const replayBtn = document.getElementById("assistantReplay");
+    const closeBtn = document.getElementById("assistantClose");
+    const voiceBtn = document.getElementById("assistantVoiceToggle");
+    const minimized = document.getElementById("assistantMinimized");
+    const assistantSub = document.getElementById("assistantSub");
+    const developerBridgeBtn = document.getElementById("developerBridgeBtn");
+
+    const summaryCache = {};
+    let activePersonKey = null;
+    let useVoice = true;
+    let selectedFemaleVoice = null;
+
+    function setProgress(percent) {
+      progressBar.style.width = Math.max(0, Math.min(100, percent)) + "%";
+    }
+
+    function pickFemaleVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+      const femaleHints = ["female", "woman", "zira", "susan", "samantha", "aria", "jenny", "hazel"];
+      const match = voices.find((voice) => {
+        const hay = (voice.name + " " + voice.voiceURI).toLowerCase();
+        return femaleHints.some((hint) => hay.includes(hint));
+      });
+      return match || voices[0];
+    }
+
+    function ensureVoicesLoaded() {
+      if (!("speechSynthesis" in window)) return;
+      const populate = () => {
+        selectedFemaleVoice = pickFemaleVoice();
+      };
+      populate();
+      window.speechSynthesis.onvoiceschanged = populate;
+    }
+
+    function speak(text) {
+      if (!useVoice || !("speechSynthesis" in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.rate = 1.0;
+        utter.pitch = 1;
+        utter.volume = 1;
+        utter.lang = "en-US";
+        if (!selectedFemaleVoice) {
+          selectedFemaleVoice = pickFemaleVoice();
+        }
+        if (selectedFemaleVoice) {
+          utter.voice = selectedFemaleVoice;
+        }
+        window.speechSynthesis.speak(utter);
+      } catch (e) {}
+    }
+
+    function assistantNotify(message, { speakIt = false } = {}) {
+      bubble.textContent = message;
+      setProgress(100);
+      if (speakIt) speak(message);
+    }
+
+    function createActionButton(label, onClick) {
+      const btn = document.createElement("button");
+      btn.className = "assistant-action-btn";
+      btn.type = "button";
+      btn.textContent = label;
+      btn.addEventListener("click", onClick);
+      return btn;
+    }
+
+    function appendActionOptions() {
+      const oldActions = bubble.querySelector(".assistant-inline-actions");
+      if (oldActions) oldActions.remove();
+      const actions = document.createElement("div");
+      actions.className = "assistant-inline-actions";
+      actions.style.display = "flex";
+      actions.style.gap = "8px";
+      actions.style.marginTop = "8px";
+      actions.style.flexWrap = "wrap";
+      actions.appendChild(createActionButton("Know who the person is", handleKnowPerson));
+      actions.appendChild(createActionButton("Rate the person", handleRatePerson));
+      actions.appendChild(createActionButton("Introduce the developer", handleIntroduceDeveloper));
+      bubble.appendChild(actions);
+    }
+
+    function renderActionOptions() {
+      if (!activePersonKey || !personProfiles[activePersonKey]) return;
+      const selected = personProfiles[activePersonKey];
+      bubble.textContent = "Selected person: " + selected.name + "\nChoose what Jane should do:";
+      appendActionOptions();
+      setProgress(0);
+    }
+
+    async function getSummary(wikiTitle) {
+      if (summaryCache[wikiTitle]) return summaryCache[wikiTitle];
+      const url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wikiTitle);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to load Wikipedia data.");
+      const data = await response.json();
+      summaryCache[wikiTitle] = data;
+      return data;
+    }
+
+    function getRating(extract) {
+      const text = (extract || "").toLowerCase();
+      let score = 55;
+      if (text.includes("senator")) score += 10;
+      if (text.includes("congress")) score += 8;
+      if (text.includes("mayor") || text.includes("governor")) score += 8;
+      if (text.includes("lawyer")) score += 6;
+      if (text.includes("cabinet")) score += 6;
+      if (text.length > 380) score += 7;
+      if (text.length > 540) score += 4;
+      if (text.includes("actor")) score += 2;
+      score = Math.max(45, Math.min(98, score));
+
+      let grade = "C";
+      if (score >= 90) grade = "A+";
+      else if (score >= 84) grade = "A";
+      else if (score >= 78) grade = "B+";
+      else if (score >= 72) grade = "B";
+      else if (score >= 66) grade = "C+";
+      return { score, grade };
+    }
+
+    async function handleKnowPerson() {
+      if (!activePersonKey || !personProfiles[activePersonKey]) return;
+      const selected = personProfiles[activePersonKey];
+      assistantNotify("Jane is reading Wikipedia profile details...");
+      try {
+        const data = await getSummary(selected.title);
+        const description = data.description || "No short description found.";
+        const details = data.extract || "No summary found.";
+        assistantNotify(
+          "Person: " + selected.name + "\n" +
+          "Short description: " + description + "\n\n" +
+          "Who is this person:\n" + details + "\n\n" +
+          "Reference: " + janeSourceUrl,
+          { speakIt: true }
+        );
+        appendActionOptions();
+      } catch (error) {
+        assistantNotify("Jane could not load this profile right now. Please try again.", { speakIt: true });
+        appendActionOptions();
+      }
+    }
+
+    function handleRatePerson() {
+      if (!activePersonKey) return;
+      const targetPage = heroPages[activePersonKey];
+      if (!targetPage) {
+        assistantNotify("No page is available yet for this person.", { speakIt: true });
+        appendActionOptions();
+        return;
+      }
+      window.location.href = targetPage;
+    }
+
+    function handleIntroduceDeveloper() {
+      assistantSub.textContent = "Developer introduction";
+      assistantNotify(
+        "Meet the developer behind this project: Dhel.\n\n" +
+        "Dhel is a developer, analyst, and security-minded builder focused on practical systems, AI-assisted solutions, and human-centered innovation.\n\n" +
+        "Dhel is currently and actively looking for remote job opportunities.\n\n" +
+        "Click or tap the Developer button to open Dhel's full profile.",
+        { speakIt: true }
+      );
+
+      const oldActions = bubble.querySelector(".assistant-inline-actions");
+      if (oldActions) oldActions.remove();
+      const actions = document.createElement("div");
+      actions.className = "assistant-inline-actions";
+      actions.style.display = "flex";
+      actions.style.gap = "8px";
+      actions.style.marginTop = "8px";
+      actions.style.flexWrap = "wrap";
+
+      const openProfileBtn = createActionButton("Open Developer Profile", () => {
+        window.location.href = "sub_pages/developer/profile.html";
+      });
+      const backBtn = createActionButton("Back to Jane options", () => {
+        renderActionOptions();
+      });
+
+      actions.appendChild(openProfileBtn);
+      actions.appendChild(backBtn);
+      bubble.appendChild(actions);
+    }
+
+    function openJaneForKey(personKey) {
+      if (!personProfiles[personKey]) return;
+      activePersonKey = personKey;
+      assistantSub.textContent = "Profile actions";
+      assistantCard.style.display = "flex";
+      minimized.style.display = "none";
+      renderActionOptions();
+    }
+
+    replayBtn.addEventListener("click", () => {
+      assistantNotify("Tap any profile picture and Jane will give you options.", { speakIt: true });
+      setProgress(0);
+    });
+
+    closeBtn.addEventListener("click", () => {
+      assistantCard.style.display = "none";
+      minimized.style.display = "flex";
+    });
+
+    minimized.addEventListener("click", () => {
+      assistantCard.style.display = "flex";
+      minimized.style.display = "none";
+      if (activePersonKey) {
+        renderActionOptions();
+      } else {
+        assistantNotify("Tap a profile picture so I can help you with that person.", { speakIt: false });
+      }
+    });
+
+    voiceBtn.addEventListener("click", () => {
+      useVoice = !useVoice;
+      voiceBtn.textContent = useVoice ? "Female Voice On" : "Female Voice Off";
+      if (!useVoice && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    });
+
+    ensureVoicesLoaded();
+
+    window.GameAssistant = {
+      notify: (msg) => assistantNotify(msg),
+      openFor: (personKey) => openJaneForKey(personKey),
+      setProfile: ({ name, avatarUrl }) => {
+        if (name) document.getElementById("assistantTitle").textContent = name;
+        if (avatarUrl) document.getElementById("assistantAvatar").src = avatarUrl;
+      }
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "g" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const isHidden = assistantCard.style.display === "none" || assistantCard.style.display === "";
+        assistantCard.style.display = isHidden ? "flex" : "none";
+        minimized.style.display = isHidden ? "none" : "flex";
+      }
+    });
+
+    developerBridgeBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      assistantCard.style.display = "flex";
+      minimized.style.display = "none";
+      handleIntroduceDeveloper();
+    });
+
   </script>
 </body>
 </html>
